@@ -29,7 +29,13 @@ class MyDocument extends Document {
                     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
                     rel="stylesheet"
                 ></link>
-                <body>
+                <script
+                    type="text/javascript"
+                    src="https://assets.calendly.com/assets/external/widget.js"
+                    async
+                ></script>
+
+                <body className=" bg-primaryColor">
                     <Main />
                     <NextScript />
                 </body>
