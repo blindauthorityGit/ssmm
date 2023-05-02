@@ -8,9 +8,11 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 //ASSETS
 import HeroImg from "../assets/hero.png";
+import Logo from "../assets/logoNeu2.png";
 import Dashboard from "../assets/dashboard.png";
 import Dashboard2 from "../assets/dashboard2.png";
 import People from "../assets/people.png";
+import Vision from "../assets/vision.jpg";
 
 // AOS
 import AOS from "aos";
@@ -20,10 +22,10 @@ export default function Home() {
     const [clients, setClients] = useState(0);
     const [adspend, setAdSpend] = useState(0);
     const [roi, setRoi] = useState(0);
-
     const clientRef = useRef(null);
     const adspendRef = useRef(null);
     const roiRef = useRef(null);
+    const allRef = useRef(null);
 
     function animateClientsNumber() {
         const finalValue = 6;
@@ -73,13 +75,62 @@ export default function Home() {
     }
 
     useEffect(() => {
+        // const animateClientsNumber = () => {
+        //     // Your animation code here
+        //     console.log("BUBU");
+        // };
+
+        // const animateAdspendNumber = () => {
+        // };
+
+        // const animateRoiNumber = () => {
+        //     // Your animation code here
+        // };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (entry.target === clientRef.current) {
+                            animateClientsNumber();
+                        } else if (entry.target === adspendRef.current) {
+                            animateAdspendNumber();
+                        } else if (entry.target === roiRef.current) {
+                            animateRoiNumber();
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                rootMargin: "0px",
+                threshold: 0.2, // Detect when element is 20% visible
+            }
+        );
+
+        if (clientRef.current) {
+            observer.observe(clientRef.current);
+        }
+        if (adspendRef.current) {
+            observer.observe(adspendRef.current);
+        }
+        if (roiRef.current) {
+            observer.observe(roiRef.current);
+        }
+
         AOS.init({
             duration: 1200,
         });
-        animateClientsNumber();
-        animateAdspendNumber();
-        animateRoiNumber();
     }, []);
+
+    // useEffect(() => {
+    //     AOS.init({
+    //         duration: 1200,
+    //     });
+    //     animateClientsNumber();
+    //     animateAdspendNumber();
+    //     animateRoiNumber();
+    // }, []);
 
     return (
         <MainContainer width="max-w-[80%]">
@@ -87,15 +138,18 @@ export default function Home() {
                 <title>Site title</title>
             </Head>
             <Hero fullHeight={true} colspan="col-span-12"></Hero>
-            <div className="top grid grid-cols-12 col-span-12 items-center ">
+            <div className="col-span-12">
+                <img className="w-48" src={Logo.src} alt="" />
+            </div>
+            <div className="top grid grid-cols-12 col-span-12 items-center">
                 <div className="col-span-12 lg:col-span-6" data-aos="fade-right">
                     <h1 className="font-sans text-5xl font-bold text-[#fff] tracking-wider">
                         Advanced Social Media Marketing For Meta, Instagram, TikTok And YouTube
                     </h1>
-                    <h2 className="text-4xl text-[#fff] mt-4">with a breathtaking ROI</h2>
+                    <h2 className="text-2xl text-[#fff] mt-4">with a breathtaking ROI</h2>
                     <a
                         href="./#call"
-                        className="bg-[#A40E4C] inline-block font-sans text-xl text-[#fff] py-5 px-8 mt-8 font-bold rounded-full "
+                        className="bg-primaryColor inline-block font-sans text-xl text-[#fff] py-5 px-8 mt-8 font-bold rounded-full "
                     >
                         Book a free Strategy Call
                     </a>
@@ -104,32 +158,32 @@ export default function Home() {
                     <img src={HeroImg.src} alt="" />
                 </div>
             </div>
-            <div className="top grid grid-cols-12 col-span-12 ">
-                <hr className="col-span-12 mb-12 border-primaryColor-100" />
+            <div className="top grid grid-cols-12 col-span-12 " ref={allRef}>
+                <hr className="col-span-12 mb-12 border-primaryColor-100 opacity-30" />
                 <div className="col-span-12 lg:flex justify-evenly">
-                    <div className="one flex flex-col items-center mb-6 lg:mb-0">
-                        <h2 ref={clientRef} className="text-[#fff] text-6xl font-bold">
+                    <div data-aos="fade-up" className="one flex flex-col items-center mb-6 lg:mb-0">
+                        <h2 ref={clientRef} className="text-[#fff] text-7xl font-bold">
                             {clients}
                         </h2>
                         <p className="text-primaryColor-50 text-xl font-sans">Active Clients</p>
                     </div>
-                    <div className="two flex flex-col items-center mb-6 lg:mb-0">
-                        <h2 ref={adspendRef} className="text-[#fff] text-6xl font-bold">
+                    <div data-aos="fade-down" className="two flex flex-col items-center mb-6 lg:mb-0">
+                        <h2 ref={adspendRef} className="text-[#fff] text-7xl font-bold">
                             {adspend}
                         </h2>
                         <p className="text-primaryColor-50 text-xl font-sans">Monthly Adspend</p>
                     </div>
-                    <div className="three flex flex-col items-center mb-6 lg:mb-0">
-                        <h2 ref={roiRef} className="text-[#fff] text-6xl font-bold">
+                    <div data-aos="fade-up" className="three flex flex-col items-center mb-6 lg:mb-0">
+                        <h2 ref={roiRef} className="text-[#fff] text-7xl font-bold">
                             {roi}
                         </h2>
                         <p className="text-primaryColor-50 text-xl font-sans">Average ROI</p>
                     </div>
                 </div>
-                <hr className="col-span-12 mt-12 border-primaryColor-100" />
+                <hr className="col-span-12 mt-12 border-primaryColor-100 opacity-30" />
             </div>
             <div className="top grid grid-cols-12 col-span-12 mt-16">
-                <h2 className="text-[#fff] mb-24 tracking-wider text-6xl font-bold col-span-12 text-center">
+                <h2 className="text-primaryColor-500 mb-24 tracking-wider text-6xl font-bold col-span-12 text-center">
                     The SSMM Approach
                 </h2>
                 <div className="col-span-12 lg:col-span-4">
@@ -209,20 +263,23 @@ export default function Home() {
             </div>
             <div className="top grid grid-cols-12 col-span-12 mt-16">
                 <div className="col-span-12 lg:col-span-8 lg:pr-24">
-                    <h2 className="text-[#fff] mb-8 tracking-wider text-6xl font-bold">Nouvelle Age(ncy)</h2>
+                    <h2 className="text-primaryColor-500 mb-8 tracking-wider text-6xl font-bold">
+                        {" "}
+                        SABOCON SOCIAL MEDIA MARKETING
+                    </h2>
                     {/* <img src={Dashboard.src} alt="" /> */}
                     <p className="font-sans text-[#fff] text-lg tracking-wider mb-4">
-                        NOUVAGE Digital is a next Generation Agency that implements new technologies and seamless
-                        systems that allow for a higher efficiency, frequent and detailed performance reports, a rapid
-                        workflow, and breathtaking results.
+                        SSMM is a next Generation Agency that implements new technologies and seamless systems that
+                        allow for a higher efficiency, frequent and detailed performance reports, a rapid workflow, and
+                        breathtaking results.
                     </p>
                     <p className="font-sans text-[#fff] text-lg tracking-wider mb-4">
                         Moving away from outdated agency structures, which included month-long onboarding processes,
                         high start-up fees as well as sporadic and impersonal communication. And more importantly, a
-                        lack of pace, which does not reflect the times we are in today.
+                        lack of pace, which does not reflect the times we are in today. As a lean business, we reduced
+                        our services to its core goal and strength: to achieve results.
                     </p>
                     <p className="font-sans text-[#fff] text-lg tracking-wider mb-4">
-                        As a lean business, we reduced our services to its core goal and strength: to achieve results.
                         We will spend less than an hour on-boarding you, and are able to directly move to strategising
                         and delivering results in an efficient manner. Above all, we are determined to provide price
                         calculations that are based on logic instead of guesswork, to allow for a transparent and
@@ -234,7 +291,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="top grid grid-cols-12 col-span-12 mt-16">
-                <h2 className="text-[#fff] mb-24 tracking-wider text-6xl font-bold col-span-12 text-center">
+                <h2 className="text-primaryColor mb-24 tracking-wider text-6xl font-bold col-span-12 text-center">
                     What We Do
                 </h2>
                 <div className="col-span-12 lg:col-span-4">
@@ -336,13 +393,13 @@ export default function Home() {
                 </p>
                 <a
                     href="./#call"
-                    className="bg-[#A40E4C] inline-block font-sans text-xl text-[#fff] py-5 px-8 mt-8 font-bold rounded-full "
+                    className="bg-primaryColor inline-block font-sans text-xl text-[#fff] py-5 px-8 mt-8 font-bold rounded-full "
                 >
                     Book a free Strategy Call
                 </a>
             </div>
             <div className="top grid grid-cols-12 col-span-12 mt-24">
-                <div className="col-span-12 lg:col-span-6 lg:pl-24">
+                <div className="col-span-12 lg:col-span-6 lg:pl-24" data-aos="fade-left">
                     <h2 className="text-[#fff] mb-8 tracking-wider text-6xl font-bold">Our Vision</h2>
                     {/* <img src={Dashboard.src} alt="" /> */}
                     <p className="font-sans text-[#fff] text-lg tracking-wider mb-4">
@@ -350,15 +407,15 @@ export default function Home() {
                         strategies and B2C communication accordingly. We aim to provide calculated and effective
                         solutions in strategic and advanced social media marketing. Always available, no matter what
                         line of communication, we deeply care about our clients and prioritise existing partnerships
-                        before closing new ones. NOUVAGE Digital was founded by Lena Werner, and is operated together
-                        with Lenny Kragba, to create a contemporary Marketing Agency and Consultancy, in line with the
+                        before closing new ones. SSMM was founded by Marc Werner, and is operated together with many
+                        young talentsa, to create a contemporary Marketing Agency and Consultancy, in line with the
                         times we live in today. When the industry changes, we change along with it. We believe in
                         cooperation and in defining strong marketing and business solutions, based on research and data
                         optimisation.
                     </p>
                 </div>
                 <div className="col-span-12 lg:col-span-6 order-first">
-                    <img src={People.src} alt="" />
+                    <img data-aos="fade-up" src={Vision.src} alt="" />
                 </div>
             </div>
             <div id="call" className="top grid grid-cols-12 col-span-12 mt-24">

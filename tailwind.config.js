@@ -38,6 +38,7 @@ module.exports = {
                 800: "#792C02",
                 900: "#421801",
             },
+            darkBG: "#02040F",
             lightGrey: "#F7F7F7",
             lightPrimary: "#E6E4DD",
             greenColor: "#6DC593",

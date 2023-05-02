@@ -35,7 +35,7 @@ class MyDocument extends Document {
                     async
                 ></script>
 
-                <body className=" bg-primaryColor">
+                <body className="gradient">
                     <Main />
                     <NextScript />
                 </body>
