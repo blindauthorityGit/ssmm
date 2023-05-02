@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import MainContainer from "../components/layout/mainContainer";
 import Hero from "../components/Hero/hero";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { InlineWidget } from "react-calendly";
 
 //ASSETS
 import HeroImg from "../assets/hero.png";
@@ -104,7 +105,7 @@ export default function Home() {
             },
             {
                 rootMargin: "0px",
-                threshold: 0.2, // Detect when element is 20% visible
+                threshold: 1, // Detect when element is 20% visible
             }
         );
 
@@ -463,11 +464,18 @@ export default function Home() {
                     </ul>
                 </div>
                 <div className="col-span-12 lg:col-span-6 mt-16 lg:mt-0 lg:order-first">
+                    <InlineWidget
+                        styles={{
+                            height: "1100px",
+                        }}
+                        url="https://calendly.com/saboconsocialmediamarketing/strategy-meeting"
+                    />
+                    {/* 
                     <div
                         className="calendly-inline-widget"
                         data-url="https://calendly.com/saboconsocialmediamarketing/strategy-meeting"
                         style={{ minWidth: "320px", height: "1130px" }}
-                    ></div>
+                    ></div> */}
                 </div>
             </div>
         </MainContainer>
