@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import MainContainer from "../components/layout/mainContainer";
 import Hero from "../components/Hero/hero";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
@@ -9,11 +8,12 @@ import { InlineWidget } from "react-calendly";
 
 //ASSETS
 import HeroImg from "../assets/hero.png";
-import Logo from "../assets/logoNeu2.png";
+import Logo from "../assets/logoNeu3.png";
 import Dashboard from "../assets/dashboard.png";
 import Dashboard2 from "../assets/dashboard2.png";
-import People from "../assets/people.png";
-import Vision from "../assets/vision.jpg";
+// import People from "../assets/people.png";
+import Vision from "../assets/vision.png";
+import Favicon from "../assets/favicon.png";
 
 // AOS
 import AOS from "aos";
@@ -136,7 +136,27 @@ export default function Home() {
     return (
         <MainContainer width="max-w-[80%]">
             <Head>
-                <title>Site title</title>
+                <title>Sabocon Social Media Marketing</title>
+                <meta
+                    name="description"
+                    content="SSMM is a next Generation Agency that implements new technologies and seamless systems that
+                        allow for a higher efficiency, frequent and detailed performance reports, a rapid workflow, and
+                        breathtaking results."
+                />
+
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link rel="icon" href={Favicon.src} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://ssmm.sabocon.com" />
+                <meta property="og:image" content={Logo.src} />
+                <meta
+                    property="og:description"
+                    content="SSMM is a next Generation Agency that implements new technologies and seamless systems that
+                    allow for a higher efficiency, frequent and detailed performance reports, a rapid workflow, and
+                    breathtaking results."
+                />
+                <meta property="og:site_name" content="SSMM" />
+                <meta property="og:locale" content="en_EN" />
             </Head>
             <Hero fullHeight={true} colspan="col-span-12"></Hero>
             <div className="col-span-12">
@@ -230,34 +250,34 @@ export default function Home() {
                     </ul>
                 </div>
                 <div className="col-span-12 lg:col-span-4 mt-16 lg:mt-0  pr-12">
-                    <h3 className="text-[#fff] text-5xl font-bold text-center mb-12">What We Don't Do</h3>
+                    <h3 className="text-[#fff] text-5xl font-bold text-center mb-12">What We Don&rsquo;t Do</h3>
                     <ul className="text-xl text-[#fff] space-y-4">
                         <li className="flex items-center">
                             <span className="mr-4 text-2xl">
                                 <FaTimesCircle />
                             </span>
-                            We don't charge any money for on boarding
+                            We don&rsquo;t charge any money for on boarding
                         </li>
                         <li className="flex items-center">
                             {" "}
                             <span className="mr-4 text-2xl">
                                 <FaTimesCircle />
                             </span>
-                            We don't create the content for campaigns{" "}
+                            We don&rsquo;t create the content for campaigns{" "}
                         </li>{" "}
                         <li className="flex items-center">
                             {" "}
                             <span className="mr-4 text-2xl">
                                 <FaTimesCircle />
                             </span>
-                            We don't offer free trials
+                            We don&rsquo;t offer free trials
                         </li>{" "}
                         <li className="flex items-center">
                             {" "}
                             <span className="mr-4 text-2xl">
                                 <FaTimesCircle />
                             </span>
-                            We don't offer Google Ads, Email Marketing or SEO Optimisation
+                            We don&rsquo;t offer Google Ads, Email Marketing or SEO Optimisation
                         </li>{" "}
                     </ul>
                 </div>
@@ -364,7 +384,7 @@ export default function Home() {
                             <span className="mr-4 text-2xl">
                                 <FaCheckCircle />
                             </span>
-                            In conjunction with your team, Lena will construct a premium advertising campaign, and
+                            In conjunction with your team, we will construct a premium advertising campaign, and
                             instruct you on how to scale and maintain it in the future.
                         </li>
                         <li className="flex items-center">
@@ -409,9 +429,9 @@ export default function Home() {
                         solutions in strategic and advanced social media marketing. Always available, no matter what
                         line of communication, we deeply care about our clients and prioritise existing partnerships
                         before closing new ones. SSMM was founded by Marc Werner, and is operated together with many
-                        young talentsa, to create a contemporary Marketing Agency and Consultancy, in line with the
-                        times we live in today. When the industry changes, we change along with it. We believe in
-                        cooperation and in defining strong marketing and business solutions, based on research and data
+                        young talents, to create a contemporary Marketing Agency and Consultancy, in line with the times
+                        we live in today. When the industry changes, we change along with it. We believe in cooperation
+                        and in defining strong marketing and business solutions, based on research and data
                         optimisation.
                     </p>
                 </div>
@@ -468,7 +488,7 @@ export default function Home() {
                         styles={{
                             height: "1100px",
                         }}
-                        url="https://calendly.com/saboconsocialmediamarketing/strategy-meeting"
+                        url="https://calendly.com/sabocon/15min"
                     />
                     {/* 
                     <div
