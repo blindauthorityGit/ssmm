@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+
 import MainContainer from "../components/layout/mainContainer";
 import Hero from "../components/Hero/hero";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
@@ -496,6 +498,14 @@ export default function Home() {
                         data-url="https://calendly.com/saboconsocialmediamarketing/strategy-meeting"
                         style={{ minWidth: "320px", height: "1130px" }}
                     ></div> */}
+                </div>
+                <div className="footer col-span-12 text-center pb-16  text-[#fff]">
+                    <Link href="./inprint">
+                        <a className="mr-16">Inprint</a>
+                    </Link>
+                    <Link href="./privacy">
+                        <a>Privacy</a>
+                    </Link>
                 </div>
             </div>
         </MainContainer>
